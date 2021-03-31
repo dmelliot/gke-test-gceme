@@ -15,9 +15,11 @@
 # Clean up branch name so it can be used for tagging and namespace
 # e.g. a common branch format may be feature/add-something.  The below
 # will update that to feature-add-something
+# Note: Couldn't get regex character groups working, so it's a multi
+# stage search/replace
 substitutions:
-    _BRANCH_NAME_SANITIZED_A: "${BRANCH_NAME/\\//-}yy"
-    _BRANCH_NAME_SANITIZED: "${_BRANCH_NAME_SANITIZED_A/[_]/-}xx"
+    _BRANCH_NAME_SANITIZED_A: "${BRANCH_NAME/\\//-}"
+    _BRANCH_NAME_SANITIZED: "${_BRANCH_NAME_SANITIZED_A/_/-}"
 
 steps:
 
