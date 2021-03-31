@@ -14,7 +14,7 @@ resource "google_cloudbuild_trigger" "trigger-dev" {
     _CLOUDSDK_CONTAINER_CLUSTER = google_container_cluster.primary.name
   }
 
-  filename = "app/builder/cloudbuild-dev.yaml"
+  filename = "cloudbuild/cloudbuild-dev.yaml"
 }
 
 resource "google_cloudbuild_trigger" "trigger-canary" {
@@ -33,7 +33,7 @@ resource "google_cloudbuild_trigger" "trigger-canary" {
     _CLOUDSDK_CONTAINER_CLUSTER = google_container_cluster.primary.name
   }
 
-  filename = "app/builder/cloudbuild-canary.yaml"
+  filename = "cloudbuild/cloudbuild-canary.yaml"
 }
 
 resource "google_cloudbuild_trigger" "trigger-prod" {
@@ -52,5 +52,5 @@ resource "google_cloudbuild_trigger" "trigger-prod" {
     _CLOUDSDK_CONTAINER_CLUSTER = google_container_cluster.primary.name
   }
 
-  filename = "app/builder/cloudbuild-prod.yaml"
+  filename = "cloudbuild//cloudbuild-prod.yaml"
 }
