@@ -74,7 +74,7 @@ steps:
           kubectl apply --namespace ${BRANCH_NAME} --recursive -f kubernetes/services
 
 substitutions:
-    _BRANCH_NAME: "${BRANCH_NAME/\\//nom}xx"
+    _BRANCH_NAME: "${BRANCH_NAME/\\//_}"
 options:
   env:
   - "_BRANCH_NAME=$(date)${BRANCH_NAME/NAME/nom}xx`date`"
