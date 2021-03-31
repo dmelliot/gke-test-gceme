@@ -33,6 +33,7 @@ steps:
 ### Publish
   - id: 'publish'
     name: 'gcr.io/cloud-builders/docker'
+    dir: app
     entrypoint: 'bash'
     args: 
       - '-c'
