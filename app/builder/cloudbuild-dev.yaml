@@ -12,6 +12,12 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+# Clean up branch name so it can be used for tagging and namespace
+# e.g. a common branch format may be feature/add-something.  The below
+# will update that to feature-add-something
+substitutions:
+    _BRANCH_NAME_SANITIZED: "${BRANCH_NAME/\\//-}"
+
 steps:
 
 ### Build
@@ -73,5 +79,4 @@ steps:
           kubectl apply --namespace ${_BRANCH_NAME} --recursive -f kubernetes/deployments/dev
           kubectl apply --namespace ${_BRANCH_NAME} --recursive -f kubernetes/services
 
-substitutions:
-    _BRANCH_NAME: "${BRANCH_NAME/\\//-}"
+
