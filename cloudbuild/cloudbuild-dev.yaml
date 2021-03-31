@@ -16,7 +16,7 @@
 # e.g. a common branch format may be feature/add-something.  The below
 # will update that to feature-add-something
 substitutions:
-    _BRANCH_NAME_SANITIZED: '${BRANCH_NAME/[a]/-}'
+    _BRANCH_NAME_SANITIZED: '${BRANCH_NAME/\[a\]/-}'
 
 steps:
 
