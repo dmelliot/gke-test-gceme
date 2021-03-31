@@ -76,4 +76,4 @@ steps:
 
 options:
   env:
-  - '_BRANCH_NAME=${BRANCH_NAME/\\//}'
+  - '_BRANCH_NAME=${BRANCH_NAME/\\/}'
