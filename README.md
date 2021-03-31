@@ -33,3 +33,30 @@ export PROJECT_NUMBER="$(gcloud projects describe $(gcloud config get-value core
 export PROJECT=$(gcloud info --format='value(config.project)')
 gcloud projects add-iam-policy-binding ${PROJECT} --member=serviceAccount:${PROJECT_NUMBER}@cloudbuild.gserviceaccount.com     --role=roles/container.developer
   ```
+
+## CloudBuild accessing the repo
+It's easiest if we push the code to _Cloud Source_ (i.e. it makes it easier for _Cloud Build_ to access).  To set this up, add an SSH key via the menu in _Cloud Source_.  Alternatively, access to _GitHub_ can be setup by installing an app on _GitHub_ (more details TBD).
+
+## Set up `kubectl` context
+
+Get details of cluster
+
+```bash
+gcloud container clusters describe <cluster name> --region <region>
+```
+
+Set config in kube config (i.e. `~/.kube/config`)
+```bash
+gcloud container clusters get-credentials
+```
+
+
+# Manual deploy
+
+TODO - put in make file or tf?
+```
+kubectl create ns production
+kubectl apply -f kubernetes/deployments/prod -n production
+kubectl apply -f kubernetes/deployments/canary -n production
+kubectl apply -f kubernetes/services -n production
+```
