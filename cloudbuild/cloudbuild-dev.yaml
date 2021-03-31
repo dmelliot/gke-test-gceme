@@ -27,6 +27,7 @@ steps:
 
   - id: 'build'
     name: 'gcr.io/cloud-builders/docker'
+    dir: app
     entrypoint: 'bash'
     args: 
       - '-c'
@@ -42,6 +43,7 @@ steps:
   - id: 'publish'
     name: 'gcr.io/cloud-builders/docker'
     entrypoint: 'bash'
+    dir: app
     args: 
       - '-c'
       - |
