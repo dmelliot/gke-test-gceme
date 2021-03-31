@@ -74,5 +74,6 @@ steps:
           kubectl apply --namespace ${BRANCH_NAME} --recursive -f kubernetes/services
 
 
-substitutions:
-  _BRANCH_NAME: "${BRANCH_NAME/\\/}"
+options:
+  env:
+  - _BRANCH_NAME=${BRANCH_NAME/\\/}
