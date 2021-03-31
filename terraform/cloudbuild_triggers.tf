@@ -6,7 +6,7 @@ resource "google_cloudbuild_trigger" "trigger-dev" {
     project_id  = "duncan-elliot-sandbox"
     branch_name = "[^(?!.*main)].*"
     repo_name   = "default"
-    dir         = "app"
+    #dir         = "app"
   }
 
   substitutions = {
