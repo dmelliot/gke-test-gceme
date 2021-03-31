@@ -36,7 +36,7 @@ steps:
     args: 
       - '-c'
       - |
-          docker push gcr.io/$PROJECT_ID/gceme:${BRANCH_NAME}-${SHORT_SHA}
+          docker push gcr.io/$PROJECT_ID/gceme:${_BRANCH_NAME}-${SHORT_SHA}
 
 
 
@@ -69,12 +69,9 @@ steps:
           cat ./kubernetes/deployments/dev/*.yaml
 
 
-          kubectl get ns ${BRANCH_NAME} || kubectl create ns ${BRANCH_NAME}
-          kubectl apply --namespace ${BRANCH_NAME} --recursive -f kubernetes/deployments/dev
-          kubectl apply --namespace ${BRANCH_NAME} --recursive -f kubernetes/services
+          kubectl get ns ${_BRANCH_NAME} || kubectl create ns ${_BRANCH_NAME}
+          kubectl apply --namespace ${_BRANCH_NAME} --recursive -f kubernetes/deployments/dev
+          kubectl apply --namespace ${_BRANCH_NAME} --recursive -f kubernetes/services
 
 substitutions:
     _BRANCH_NAME: "${BRANCH_NAME/\\//_}"
-options:
-  env:
-  - "_BRANCH_NAME=$(date)${BRANCH_NAME/NAME/nom}xx`date`"
