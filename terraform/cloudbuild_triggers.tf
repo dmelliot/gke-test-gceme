@@ -52,5 +52,5 @@ resource "google_cloudbuild_trigger" "trigger-prod" {
     _CLOUDSDK_CONTAINER_CLUSTER = google_container_cluster.primary.name
   }
 
-  filename = "cloudbuild//cloudbuild-prod.yaml"
+  filename = "cloudbuild/cloudbuild-prod.yaml"
 }
