@@ -66,22 +66,23 @@ kubectl apply -f kubernetes/services -n production
 ## Other examples using `kubectl`
 
 Scale up/down the front end replicas
-```
+```bash
 kubectl -n production scale --replicas=2 deployments/gceme-frontend-production
-``
+```
 
 Run interactive bash shell in the first container found in the first pod of the specified service.
-```
-$ kubectl -n production exec svc/gceme-frontend -it -- bash
+```bash
+kubectl -n production exec svc/gceme-frontend -it -- bash
 ```
 
 The backend pods are fronted by a `ClusterIP` service (no `type` is specified in `backend.yaml` so it defaults to `ClusterIP`).  This service balances/proxies requests to the endpoints.
-```
+
+```bash
 kubectl -n production get service gceme-backend --output=yaml
 ```
 
 If the service has a selector specified (`backend.yaml` does) then an `Endpoints` object of the same name is created with the service.
 The controller for the `Service` selector continuously scans for Pods that match its selector, and then POSTs any updates to an Endpoint object.
-  ```
+```bash
 kubectl -n production get endpoints gceme-backend --output=yaml
 ```
