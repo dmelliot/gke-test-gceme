@@ -1,3 +1,11 @@
+# Overview
+TBD
+
+# References
+
+- https://codelabs.developers.google.com/codelabs/cloud-builder-gke-continuous-deploy#1
+- https://learn.hashicorp.com/tutorials/terraform/gke?in=terraform/kubernetes
+
 # Setup
 
 ## Pre-req
@@ -5,23 +13,18 @@
 - Google Cloud SDK (install from https://cloud.google.com/sdk/docs/install then run `gcloud init`)
 - Terraform
 
-# References
-
-- https://codelabs.developers.google.com/codelabs/cloud-builder-gke-continuous-deploy#1
-- https://learn.hashicorp.com/tutorials/terraform/gke?in=terraform/kubernetes
-
-# Authentication
+## Authentication
 
 TODO - set up to use service account impersonation
 
-## Authenticate using default login
+### Authenticate using default login
 
 ```bash
 gcloud auth application-default login
 ```
 
 
-# Manual glcoud steps
+## Manual glcoud steps
 
 ```bash
 gcloud services enable container.googleapis.com     containerregistry.googleapis.com     cloudbuild.googleapis.com     sourcerepo.googleapis.com
@@ -37,9 +40,9 @@ gcloud projects add-iam-policy-binding ${PROJECT} --member=serviceAccount:${PROJ
 ## CloudBuild accessing the repo
 It's easiest if we push the code to _Cloud Source_ (i.e. it makes it easier for _Cloud Build_ to access).  To set this up, add an SSH key via the menu in _Cloud Source_.  Alternatively, access to _GitHub_ can be setup by installing an app on _GitHub_ (more details TBD).
 
-# `kubectl` control
+## `kubectl` control
 
-## Set up `kubectl` context
+### Set up `kubectl` context
 
 Get details of cluster
 
@@ -53,7 +56,7 @@ gcloud container clusters get-credentials
 ```
 
 
-## Manual deploy with `kubectl`
+### Manual deploy with `kubectl`
 
 
 ```
@@ -63,7 +66,7 @@ kubectl apply -f kubernetes/deployments/canary -n production
 kubectl apply -f kubernetes/services -n production
 ```
 
-## Other examples using `kubectl`
+### Other examples using `kubectl`
 
 Scale up/down the front end replicas
 ```bash
